@@ -106,38 +106,96 @@
 						<p>Quick History Lesson... Vue.js has it's roots in AngularJS. The best parts were "extracted out".</p>
 					</div>
 			</section>
-			<section>Comparison of Frameworks
+			<section>
+				<h2>Comparison of Frameworks</h2>
 				<table>
 					<thead>
 						<tr>
-							<th>Item</th>
-							<th>Value</th>
-							<th>Quantity</th>
+							<th>Framework</th>
+							<th>Type</th>
+							<th>Languages</th>
+							<th>Documentation/Popularity</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>Apples</td>
-							<td>$1</td>
-							<td>7</td>
+							<td>
+								<strong>Vue</strong>
+							</td>
+							<td>Library</td>
+							<td>JavaScript &amp; Html</td>
+							<td>Newest, great site, gaining pop</td>
 						</tr>
 						<tr>
-							<td>Lemonade</td>
-							<td>$2</td>
-							<td>18</td>
+							<td>
+								<strong>React</strong>
+							</td>
+							<td>Framework</td>
+							<td>JavaScript &amp; JSX</td>
+							<td>Hugly popular</td>
 						</tr>
 						<tr>
-							<td>Bread</td>
-							<td>$3</td>
-							<td>2</td>
+							<td>
+								<strong>Angular</strong>
+							</td>
+							<td>Framework</td>
+							<td>TypeScript &amp; Html</td>
+							<td>Backed by big companies</td>
+						</tr>
+						<tr>
+							<td>
+								<strong>AngularJS</strong>
+							</td>
+							<td>Framework</td>
+							<td>JavaScript &amp; Html</td>
+							<td>Oldest, tons of help available</td>
 						</tr>
 					</tbody>
 				</table>
+				<br>
+				<p>
+					<h4>Verdict</h4>
+				</p>
+				<br>
+				<p>
+					Don't use AngularJS on new projects. Consider using Angular if your team loves TypeScript (which is great!) and wants a full
+					featured and oppinionated framework. React is uber popular and arguably more complex than Vue. Use Vue if you want simplicity
+					that comes with power from official plugins.
+				</p>
 			</section>
-			<section>Getting Started
-				<section>Official Documentation</section>
-				<section>Install via NPM</section>
-				<section>Vue CLI</section>
+			<section>
+				<h2>Getting Started</h2>
+				<section>
+					Official Documentation
+					<p>
+						https://vuejs.org/
+						<img src="images/vue-site.png">
+					</p>
+				</section>
+				<section>
+					Drop in a script reference
+					<pre><code class="JavaScript">&lt;script src="https://cdn.jsdelivr.net/npm/vue"&gt;&lt;/script&gt;</code></pre>
+					<br>
+					Install via NPM
+					<pre><code class="Shell">$ npm install vue</code></pre>
+					<br>
+					Add to you package.json for a build framework
+					<pre><code class="JSON">"vue": "^2.5.2"</code></pre>
+				</section>
+				<section>
+					Vue CLI
+					<p>Vue provides a CLI (command line interface) to quickly generate new projects from templates and to even serve them up locally via node.js</p>
+					<pre><code class="Shell">
+							# install vue-cli
+							$ npm install --global vue-cli
+							# create a new project using the "webpack" template
+							$ vue init webpack my-project
+							# install dependencies and go!
+							$ cd my-project
+							$ npm install
+							$ npm run dev
+					</code></pre>
+				</section>
 			</section>
 			<section>Hello World!</section>
 			<section>Vue.js Basics
