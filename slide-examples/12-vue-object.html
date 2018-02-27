@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            reactiveDataElement1: {}, // Must be initialized
+            reactiveDataElement2: [] // Notice that these get pulled up into the root object... ex: app.reactiveDataElement2
+        },
+        methods: {
+            iHandleEvents(event) {
+            },
+            someOtherMethod() {
+            },
+        },
+        created(){
+            // I fire when the Vue object is created but NOT yet part of the DOM
+        },
+        mounted(){
+            // I fire when the virtual DOM is rendered and available in the DOM
+        },
+        updated(){
+            // Not used often as Vue reactivity handles most cases 
+        },
+        destroyed(){
+            // Clean-up things here if needed
+        }
+    })
+</script>
+
+</html>

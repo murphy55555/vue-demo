@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>v-bind with ternary expression</p>
+        <img v-bind:src="workIsOver ? awesomerImageUrl : awesomeImageUrl" style="height: 250px; width: 250px;">
+    </div>
+</body>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            awesomeImageUrl: "/images/awesome.jpg",
+            awesomerImageUrl: "/images/beer.jpg",
+            workIsOver: false
+        }
+    })
+</script>
+
+</html>

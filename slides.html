@@ -97,7 +97,7 @@
 						<p>Vue is a progressive front-end JavaScript framework that focuses on... well... the view.</p>
 						<ul>
 							<li>Templates (Html-ish), Reactivity (2-way binding), Components (widgets)</li>
-							<li>Progressive - Use as little or as much as you like. Very little oppinions.</li>
+							<li>Progressive - Use as little or as much as you like. Very little opinions.</li>
 							<li>You can drop it into your .Net or Java project with a simple script tag!!</li>
 							<li>Uses a virtual DOM, all the rage these days</li>
 							<li>Uses "official" (and unofficial) plugins to become a full featured SPA</li>
@@ -132,7 +132,7 @@
 							</td>
 							<td>Framework</td>
 							<td>JavaScript &amp; JSX</td>
-							<td>Hugly popular</td>
+							<td>Hugely popular</td>
 						</tr>
 						<tr>
 							<td>
@@ -159,7 +159,7 @@
 				<br>
 				<p>
 					Don't use AngularJS on new projects. Consider using Angular if your team loves TypeScript (which is great!) and wants a full
-					featured and oppinionated framework. React is uber popular and arguably more complex than Vue. Use Vue if you want simplicity
+					featured and opinionated framework. React is uber popular and arguably more complex than Vue. Use Vue if you want simplicity
 					that comes with power from official plugins.
 				</p>
 			</section>
@@ -175,16 +175,15 @@
 				<section>
 					Drop in a script reference
 					<pre><code class="JavaScript">&lt;script src="https://cdn.jsdelivr.net/npm/vue"&gt;&lt;/script&gt;</code></pre>
-					<br>
-					Install via NPM
+					<br> Install via NPM
 					<pre><code class="Shell">$ npm install vue</code></pre>
-					<br>
-					Add to you package.json for a build framework
+					<br> Add to you package.json for a build framework
 					<pre><code class="JSON">"vue": "^2.5.2"</code></pre>
 				</section>
 				<section>
 					Vue CLI
-					<p>Vue provides a CLI (command line interface) to quickly generate new projects from templates and to even serve them up locally via node.js</p>
+					<p>Vue provides a CLI (command line interface) to quickly generate new projects from templates and to even serve them up
+						locally via node.js</p>
 					<pre><code class="Shell">
 							# install vue-cli
 							$ npm install --global vue-cli
@@ -197,16 +196,98 @@
 					</code></pre>
 				</section>
 			</section>
-			<section>Hello World!</section>
-			<section>Vue.js Basics
-				<section>Declarative Rendering</section>
-				<section>Directives (v-bind)</section>
-				<section>Conditionals and Loops</section>
-				<section>Handlng events and User Input</section>
-				<section>The Vue Object and Lifecycle</section>
-				<section>More on Directives (classes) *shorthand!</section>
-				<section>Forms (v-model)</section>
-				<section>Computed and Watchers</section>
+			<section>
+				<h2>Hello World!</h2>
+				<a href="/slide-examples/1-hello-world.html" target="_blank">Example 1</a>
+				<br>
+				<br>
+				<img src="images/wow.jpg" style="height:500px; width:500px">
+				<br>
+				<a href='https://www.freepik.com/free-vector/wow-speech-bubble_1111599.htm'>Designed by Freepik</a>
+			</section>
+			<section>
+				<span class="pull-left">Vue.js Basics</span>
+				<section>
+					<strong>Declarative Rendering</strong>
+					<p>We declare the items that change using {{ mustache }} and the DOM becomes reactive.</p>
+				</section>
+				<section>
+					<strong>Directives Intro</strong>
+					<p>
+						These are arguably one of the best parts of AngularJS that were incorporated into Vue. They instruct the Vue engine to perform
+						various transforms based upon how they are used. Most directives are prefixed with
+						<strong>v-</strong> ... The Vue guys got it right as opposed to the Angular guys...
+						<strong>ng-</strong>
+						<br>
+						<em>*scratches head</em>
+					</p>
+					<p>
+						<a href="/slide-examples/2-directives.html" target="_blank">Example 2</a>
+						<br>
+						<a href="/slide-examples/3-directives.html" target="_blank">Example 3</a>
+						<br>
+						<a href="/slide-examples/4-directives.html" target="_blank">Example 4</a>
+						<br>
+						<a href="/slide-examples/5-directives.html" target="_blank">Example 5</a>
+						<br>
+					</p>
+				</section>
+
+				<section>
+					<strong>Conditionals and Loops</strong>
+					<p>
+						v-if you are enjoying this talk
+						<br> v-for friend in your friends
+						<br> friend.tell(them about Vue.js)
+					</p>
+					<p>
+						<a href="/slide-examples/6-v-if.html" target="_blank">Example 6</a>
+						<br>
+						<a href="/slide-examples/7-v-for.html" target="_blank">Example 7</a>
+						<br>
+						<a href="/slide-examples/8-v-for-AND-v-if.html" target="_blank">Example 8</a>
+						<br>
+					</p>
+				</section>
+				<section>
+					<strong>Handling events and User Input</strong>
+					<pre><code class="JavaScript">
+					while(!button.isBeingClicked){
+						sleep(100);
+					}
+					// The button is clicked!
+
+					// Just kidding =)
+					</code></pre>
+					<a href="/slide-examples/9-v-on.html" target="_blank">Example 9</a>
+					<br>
+					<a href="/slide-examples/10-v-on.html" target="_blank">Example 10</a>
+					<br>
+					<a href="/slide-examples/11-v-on.html" target="_blank">Example 11</a>
+					<br>
+				</section>
+				<section><strong>The Vue Object and Life cycle</strong>
+					<br>
+					<img src="images/vue-lifecycle.PNG" style="height:500px; width:300px">
+					<br>
+					<a href="/slide-examples/12-vue-object.html" target="_blank">Example 12</a>
+				</section>
+				<section>More on Directives (css classes)
+					<p>Using JavaScript to manipulate css classes is so super common that Vue has helpers.... well to help you =)</p>
+					<br>
+					<a href="/slide-examples/13-classes.html" target="_blank">Example 13</a>
+					<br>
+					<a href="/slide-examples/14-classes.html" target="_blank">Example 14</a>
+					<br>
+					<a href="/slide-examples/15-shortcuts.html" target="_blank">Example 15</a>
+					<br>
+				</section>
+				<section>Forms (v-model)
+
+				</section>
+				<section>Computed and Watchers
+
+				</section>
 			</section>
 			<section>Vue.js Components
 				<section>Template Syntax and Basics</section>

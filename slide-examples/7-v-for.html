@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="/node_modules/bootstrap3/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <p>v-for</p>
+        <div v-if="productReviews.length > 0">
+            <table  class="table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Reviewer</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="review in productReviews">
+                        <td>{{review.date}}</td>
+                        <td>{{review.reviewer}}</td>
+                        <td>{{review.rating}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div v-else>
+            <p>No product reviews... sad bear</p>
+        </div>
+    </div>
+</body>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            productReviews: [{date: new Date(), reviewer: "Wolverine", rating: 1},
+            {date: new Date(), reviewer: "Cyclops", rating: 4},
+            {date: new Date(), reviewer: "Professor X", rating: 4},
+            {date: new Date(), reviewer: "Storm", rating: 3.5},
+            {date: new Date(), reviewer: "Gambit", rating: 5}],
+        }
+    })
+</script>
+
+</html>
+
+<!-- app.productReviews.pop() -->

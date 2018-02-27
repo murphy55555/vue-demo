@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p :style="{ backgroundColor:  myBackgroundColor}">v-bind: = :</p>
+        <button @click="inc++">v-on:click = @</button>
+        <p>Clicked {{inc}} times</p>
+    </div>
+</body>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            myBackgroundColor: "paleturquoise",
+            inc: 0
+        }
+    })
+</script>
+
+</html>

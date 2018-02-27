@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="/node_modules/bootstrap3/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <p>v-if</p>
+        <div v-if="productReviews.length > 0">
+            <table class="table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Reviewer</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div v-else>
+            <p>No product reviews... sad bear</p>
+        </div>
+    </div>
+</body>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            productReviews: [],
+        }
+    })
+</script>
+
+</html>
+
+<!-- app.productReviews.push({}) -->
