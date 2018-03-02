@@ -1,6 +1,6 @@
 <template>
 <div>
-  Foo
+  Ability
 </div>
 
 </template>
