@@ -36,7 +36,7 @@
           <tbody>
             <tr v-for="character in characters" v-bind:key="character.name">
               <td>{{character.characterClass}}</td>
-              <td>{{character.name}}</td>
+              <td> <router-link :to="{ name: 'characterDetail', params: { characterName: character.name }}">{{character.name}}</router-link></td>
               <td>{{character.level}}</td>
               <td>{{character.race}}</td>
             </tr>

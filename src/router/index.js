@@ -1,11 +1,12 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import CharacterSearch from '@/components/characterSearch'
-import CharacterDetail from '@/components/characterDetail.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import CharacterSearch from '@/components/characterSearch';
+import CharacterDetail from '@/components/characterDetail';
 
-Vue.use(Router)
+Vue.use(VueRouter);
 
-export default new Router({
+export default new VueRouter({
+  mode: 'history',
   routes: [
     {
       path: '/',

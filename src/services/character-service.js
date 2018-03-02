@@ -8,8 +8,7 @@
 }
 
 export class CharacterService {
-    constructor() {
-    }
+    constructor() {}
 
     static getCharacters() {
         let characters = [];
@@ -25,5 +24,10 @@ export class CharacterService {
             new Character("Centiuma", "Fighter", 2, "Draconian"));
 
         return characters;
+    }
+
+    static getCharacter(characterName) {
+        return CharacterService.getCharacters()
+            .filter(c => c.name.toLowerCase() === characterName.toLowerCase())[0];
     }
 }
