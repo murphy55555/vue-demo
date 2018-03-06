@@ -3,7 +3,7 @@
     <div class="abilityBox">
       {{abilityType}}
       <br>
-      <input type='number' class="abilityValue" v-model="abilityScore" v-on:change="calculateBonus">
+      <input type='number' class="abilityValue" v-model.number="abilityScore" v-on:change="calculateBonus">
       <br>
       <span>Bonus:{{bonus}}</span>
     </div>
@@ -11,35 +11,37 @@
 </template>
 
 <script>
+import { CharacterService } from "@/services/character-service";
+
 export default {
-  name:"ability",
-  props:[
-    "abilityType",
-    "score"
-  ],
+  name: "ability",
+  props: ["abilityType", "score"],
   data: function() {
     return {
-      bonus: "+3",
+      bonus: "",
       abilityScore: this.score
     };
   },
-  methods:{
+  methods: {
     calculateBonus() {
-      if(this.abilityScore <= 5){
-        this.bonus = "-1";
-      }else if(this.abilityScore > 5 && this.abilityScore <= 10){
-        this.bonus = "0";
-      }else if(this.abilityScore > 10 && this.abilityScore <= 15){
-        this.bonus = "+1";
-      }else{
-        this.bonus = "+2";
+      let bonus = CharacterService.getAbilityBonus(this.abilityScore);
+
+      if (bonus > 0) {
+        this.bonus = "+" + bonus.toString();
+      } else {
+        this.bonus = bonus.toString();
       }
 
-      this.$emit('score-changed', 
-      { 
-        abilityType: this.abilityType, 
-        newScore: this.abilityScore 
-      });
+      let changedAbility = {
+        type: this.abilityType,
+        newScore: this.abilityScore
+      };
+
+      // Commit the change
+      this.$store.commit("updateAbility", changedAbility);
+
+      // Notify parent components
+      this.$emit("score-changed", changedAbility);
     }
   },
   created() {
@@ -49,14 +51,11 @@ export default {
 </script>
 
 <style>
-abilityBox {
+.abilityBox {
   border: 2px solid;
-  padding: 4px;
-  height: 100px;
-  width: 120px;
 }
 
-abilityValue {
-  width: 100%;
+.abilityValue {
+  width: 40px;
 }
 </style>
