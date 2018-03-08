@@ -16,7 +16,7 @@
             <input type="text" v-model="characterName" v-on:input="filter" class="form-control" placeholder="Character Name">
           </div>
           <div class="form-group">
-            <input type="number" v-model.number="level" v-on:input="filter" class="form-control" placeholder="Level">
+            <input type="number" v-model.number="level" v-on:input="filter" class="form-control" placeholder="Character Level">
           </div>
         </form>
       </div>
