@@ -57,7 +57,6 @@
 </template>
 
 <script>
-import { CharacterService } from "@/services/character-service";
 import CharacterAbilities from "@/components/characterAbilities";
 import CharacterBasicInfo from "@/components/characterBasicInfo";
 import CharacterStats from "@/components/characterStats";
