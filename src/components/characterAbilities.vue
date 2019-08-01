@@ -8,8 +8,8 @@
     <br>
     <div class="row">
         <span v-for="a in abilities" v-bind:key="a.type" class="ability-box col-sm-2">
-          <Ability :score="a.score" :ability-type="a.type" class="background-blue">
-          </Ability>
+          <CharacterAbility :score="a.score" :ability-type="a.type" class="background-blue">
+          </CharacterAbility>
         </span>
     </div>
     <br>
@@ -24,12 +24,12 @@
 </template>
 
 <script>
-import Ability from "./ability";
+import CharacterAbility from "./CharacterAbility";
 import { mapState, mapGetters } from 'vuex';
 
 export default {
   components: {
-    Ability
+    CharacterAbility
   },
   computed: {
     ...mapState('characterDetails', [

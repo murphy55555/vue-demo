@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import CharacterSearch from '@/components/characterSearch';
-import CharacterDetail from '@/components/characterDetail';
+import CharacterSearch from '@/components/CharacterSearch';
+import CharacterDetail from '@/components/CharacterDetail';
 
 Vue.use(VueRouter);
 

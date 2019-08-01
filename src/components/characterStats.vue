@@ -4,7 +4,7 @@
       <div class="col-sm-3">
         Weapon:
         <select v-model="weapon">
-          <option v-for="availableWeapon in availableWeapons" v-bind:key="availableWeapon.name" v-bind:value="availableWeapon">{{availableWeapon.name}}</option>
+          <option v-for="availableWeapon in availableWeapons" :key="availableWeapon.name" :value="availableWeapon">{{availableWeapon.name}}</option>
         </select>
       </div>
       <div class="col-sm-2">
@@ -14,7 +14,7 @@
       <div class="col-sm-3">
         Armor:
         <select v-model="armor">
-          <option v-for="availableArmor in availableArmors" v-bind:key="availableArmor.name" v-bind:value="availableArmor">{{availableArmor.name}}</option>
+          <option v-for="availableArmor in availableArmors" :key="availableArmor.name" :value="availableArmor">{{availableArmor.name}}</option>
         </select>
       </div>
       <div class="col-sm-1">

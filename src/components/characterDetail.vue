@@ -57,9 +57,9 @@
 </template>
 
 <script>
-import CharacterAbilities from "@/components/characterAbilities";
-import CharacterBasicInfo from "@/components/characterBasicInfo";
-import CharacterStats from "@/components/characterStats";
+import CharacterAbilities from "@/components/CharacterAbilities";
+import CharacterBasicInfo from "@/components/CharacterBasicInfo";
+import CharacterStats from "@/components/CharacterStats";
 import { mapActions } from 'vuex';
 
 export default {
