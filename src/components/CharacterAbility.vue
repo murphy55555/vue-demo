@@ -1,16 +1,28 @@
 <template>
-  <div>
-    <div class="abilityBox">
+  <v-card>
+    <v-card-title>
       {{abilityType}}
-      <br>
-      <input type='number' name="abilityScore" class="abilityValue" v-model.number="abilityScore" @change="abilityChanged" v-validate="'required|between:1,20'">
-      <br>
-      <div v-show="errors.has('abilityScore')">
-        <span class="text-danger">{{ errors.first('abilityScore') }}</span>
-      </div>
-      <span>Bonus:{{bonus}}</span>
-    </div>
-  </div>
+    </v-card-title>
+    <v-slider
+        v-model.number="abilityScore"
+        class="align-center"
+        hide-details
+        :min="0"
+        :max="20"
+      >
+        <template #append>
+          <v-text-field
+            v-model.number="abilityScore"
+            class="mt-0 pt-0"
+            hide-details
+            single-line
+            type="number"
+            style="width: 40px"
+          ></v-text-field>
+        </template>
+      </v-slider>
+    <span>Bonus <strong>{{bonus}}</strong></span>
+  </v-card>
 </template>
 
 <script>
@@ -42,6 +54,11 @@ export default {
       ]
     )
   },
+  watch: {
+    abilityScore() {
+      this.abilityChanged();
+    }
+  },
   computed: {
     bonus() {
       const bonus = getAbilityBonus(this.abilityScore);
@@ -56,11 +73,4 @@ export default {
 </script>
 
 <style>
-.abilityBox {
-  border: 2px solid;
-}
-
-.abilityValue {
-  width: 40px;
-}
 </style>

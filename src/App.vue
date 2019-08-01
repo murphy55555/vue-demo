@@ -1,7 +1,17 @@
 <template>
-  <div id="app" class="container">
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>Vuetiful D&amp;D</span>
+      </v-toolbar-title>
+    </v-app-bar>
+
+    <v-content>
+      <v-container grid-list-xl>
+        <router-view/>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
@@ -11,13 +21,7 @@ export default {
 </script>
 
 <style>
-@import '../node_modules/bootstrap3/dist/css/bootstrap.min.css';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

@@ -1,24 +1,14 @@
 <template>
   <div class="abilities-box">
-    <div class="row">
-      <div class="col-sm-12">
-        <span class="h3">Ability Scores</span>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-        <span v-for="a in abilities" v-bind:key="a.type" class="ability-box col-sm-2">
-          <CharacterAbility :score="a.score" :ability-type="a.type" class="background-blue">
-          </CharacterAbility>
-        </span>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-sm-12">
-        <span>Your ability skills are
-          <strong>{{getAbilitySkillStrength}}</strong>
-        </span>
-      </div>
+    <h3 class="text-center">Ability Scores</h3>
+    <v-layout>
+      <v-flex xs2 v-for="a in abilities" :key="a.type">
+        <CharacterAbility :score="a.score" :ability-type="a.type" class="background-blue">
+        </CharacterAbility>
+      </v-flex>
+    </v-layout>
+    <div class="text-center">Your ability skills are
+      <strong>{{getAbilitySkillStrength}}</strong>
     </div>
   </div>
 </template>

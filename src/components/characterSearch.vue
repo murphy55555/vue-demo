@@ -1,51 +1,59 @@
 <template>
-  <div>
-    <div class="row">
-      <div class="col-sm-10">
-        <form class="form-inline">
-          <div class="form-group">
-            <select class="form-control" v-model="characterClass" v-on:change="filter">
-              <option>All Classes</option>
-              <option>Druid</option>
-              <option>Wizard</option>
-              <option>Fighter</option>
-              <option>Thief</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <input type="text" v-model="characterName" v-on:input="filter" class="form-control" placeholder="Character Name">
-          </div>
-          <div class="form-group">
-            <input type="number" v-model.number="level" v-on:input="filter" class="form-control" placeholder="Character Level">
-          </div>
-        </form>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-sm-10">
-        <table class="table table-bordered table-hover table-striped">
-          <thead>
-            <tr>
-              <th>Class</th>
-              <th>Name</th>
-              <th>Level</th>
-              <th>Race</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="character in characters" v-bind:key="character.name">
-              <td>{{character.characterClass}}</td>
-              <td> <router-link :to="{ name: 'characterDetail', params: { characterName: character.name }}">{{character.name}}</router-link></td>
-              <td>{{character.level}}</td>
-              <td>{{character.race}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
+<div>
+  <v-layout justify-center>
+    <v-flex
+      xs2
+      >
+      <v-select
+        v-model="characterClass"
+        label="Class"
+        :items="['All Classes', 'Druid', 'Wizard', 'Fighter', 'Thief']"
+        @change="filter"
+      ></v-select>
+    </v-flex>
+    <v-flex
+      xs2
+      >
+      <v-text-field
+        v-model="characterName"
+        label="Character Name"
+        @input="filter"
+      ></v-text-field>
+    </v-flex>
+    <v-flex
+      xs2
+      >
+      <v-text-field
+        v-model.number="level"
+        label="Character Level"
+        type="number"
+        @input="filter"
+      ></v-text-field>
+    </v-flex>
+  </v-layout>
+  <v-layout justify-center>
+    <v-flex xs10>
+    <v-simple-table>
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th>Name</th>
+          <th>Level</th>
+          <th>Race</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="character in characters" v-bind:key="character.name">
+          <td>{{character.characterClass}}</td>
+          <td> <router-link :to="{ name: 'characterDetail', params: { characterName: character.name }}">{{character.name}}</router-link></td>
+          <td>{{character.level}}</td>
+          <td>{{character.race}}</td>
+        </tr>
+      </tbody>
+    </v-simple-table>
+    </v-flex>
+  </v-layout>
+</div>
 </template>
 
 <script>

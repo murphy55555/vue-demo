@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="row">
-      <div class="col-sm-6">
-        Component Legend:<br>
-        <table class="table table-bordered table-condensed">
+    <h3>Component Legend</h3>
+    <v-layout>
+      <v-flex>
+        <table>
           <thead>
             <tr>
               <th>Component</th>
@@ -12,47 +12,33 @@
           </thead>
           <tbody>
             <tr>
-              <td>characterDetail.vue</td>
+              <td>CharacterDetail.vue</td>
               <td>white</td>
             </tr>
             <tr>
-              <td>characterBasicInfo.vue</td>
-              <td class="background-green">aquamarine</td>
+              <td>CharacterBasicInfo.vue</td>
+              <td class="calledout-component background-green">aquamarine</td>
             </tr>
             <tr>
-              <td>characterStats.vue</td>
-              <td class="background-grey">lightgrey</td>
+              <td>CharacterStats.vue</td>
+              <td class="calledout-component background-grey">lightgrey</td>
             </tr>
             <tr>
-              <td>characterAbilities.vue</td>
-              <td class="background-brown">wheat</td>
+              <td>CharacterAbilities.vue</td>
+              <td class="calledout-component background-brown">wheat</td>
             </tr>
             <tr>
-              <td>ability.vue</td>
-              <td class="background-blue">paleturquoise</td>
+              <td>CharacterAbility.vue</td>
+              <td class="calledout-component background-blue">paleturquoise</td>
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-    <br> <br>
-    <div class="row">
-      <div class="col-sm-12">
-        <CharacterBasicInfo class="background-green"></CharacterBasicInfo>
-      </div>
-    </div>
+      </v-flex>
+    </v-layout>
     <br>
-    <div class="row">
-      <div class="col-sm-12">
-        <CharacterStats class="background-grey"></CharacterStats>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-sm-12">
-        <CharacterAbilities class="background-brown"></CharacterAbilities>
-      </div>
-    </div>
+    <CharacterBasicInfo class="calledout-component background-green"></CharacterBasicInfo>
+    <CharacterStats class="calledout-component background-grey"></CharacterStats>
+    <CharacterAbilities class="calledout-component background-brown"></CharacterAbilities>
   </div>
 </template>
 
@@ -81,22 +67,21 @@ export default {
 </script>
 
 <style>
-.background-green {
-  background-color: aquamarine;
+.calledout-component {
   border: 2px solid;
   padding: 10px;
+  margin: 2px;
+}
+.background-green {
+  background-color: aquamarine;
 }
 .background-grey {
   background-color: lightgrey;
-  border: 2px solid;
-  padding: 10px;
 }
 .background-brown {
   background-color: wheat;
-  border: 2px solid;
-  padding: 10px;
 }
 .background-blue {
-  background-color: paleturquoise;
+  background-color: paleturquoise !important;
 }
 </style>

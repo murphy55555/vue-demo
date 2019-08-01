@@ -1,27 +1,32 @@
 <template>
   <div>
-    <div class="row">
-      <div class="col-sm-3">
-        Weapon:
-        <select v-model="weapon">
-          <option v-for="availableWeapon in availableWeapons" :key="availableWeapon.name" :value="availableWeapon">{{availableWeapon.name}}</option>
-        </select>
-      </div>
-      <div class="col-sm-2">
-        DMG:
-        <strong>{{getDmg}}</strong>
-      </div>
-      <div class="col-sm-3">
-        Armor:
-        <select v-model="armor">
-          <option v-for="availableArmor in availableArmors" :key="availableArmor.name" :value="availableArmor">{{availableArmor.name}}</option>
-        </select>
-      </div>
-      <div class="col-sm-1">
-        AC:
-        <strong>{{getAc}}</strong>
-      </div>
-    </div>
+    <v-layout justify-center>
+      <v-flex xs2>
+        <v-select
+          label="Weapon"
+          v-model="weapon"
+          :items="availableWeapons"
+          item-text="name"
+          item-value="name"
+          return-object
+          >
+        </v-select>
+        DMG <strong>{{getDmg}}</strong>
+      </v-flex>
+        
+      <v-flex xs2>
+        <v-select
+          label="Armor"
+          v-model="armor"
+          :items="availableArmors"
+          item-text="name"
+          item-value="name"
+          return-object
+          >
+        </v-select>
+        AC <strong>{{getAc}}</strong>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 

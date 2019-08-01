@@ -1,7 +1,4 @@
-import Vue from 'vue';
-import Vuex from 'vuex'
 import * as CharacterService from '@/services/character-service';
-Vue.use(Vuex);
 
 const state = {
     name: '',
