@@ -3,7 +3,7 @@
     <div class="abilityBox">
       {{abilityType}}
       <br>
-      <input type='number' name="abilityScore" class="abilityValue" v-model.number="abilityScore" v-on:change="calculateBonus" v-validate="'required|between:1,20'">
+      <input type='number' name="abilityScore" class="abilityValue" v-model.number="abilityScore" v-on:change="abilityChanged" v-validate="'required|between:1,20'">
       <br>
       <div v-show="errors.has('abilityScore')">
         <span class="text-danger">{{ errors.first('abilityScore') }}</span>
@@ -14,43 +14,43 @@
 </template>
 
 <script>
-import { CharacterService } from "@/services/character-service";
+import { getAbilityBonus } from "@/services/character-service";
+import { mapMutations } from 'vuex';
 
 export default {
   name: "ability",
   props: ["abilityType", "score"],
   data: function() {
     return {
-      bonus: "",
       abilityScore: this.score
     };
   },
   methods: {
-    calculateBonus() {
+    abilityChanged() {
+      // TODO: should this validate before updating the store or always update the store? https://baianat.github.io/vee-validate/examples/vuex.html#demo
       if (this.errors.any()) return;
-
-      let bonus = CharacterService.getAbilityBonus(this.abilityScore);
-
-      if (bonus > 0) {
-        this.bonus = "+" + bonus.toString();
-      } else {
-        this.bonus = bonus.toString();
-      }
 
       let changedAbility = {
         type: this.abilityType,
         newScore: this.abilityScore
       };
-
       // Commit the change
-      this.$store.commit("updateAbility", changedAbility);
-
-      // Notify parent components
-      this.$emit("score-changed", changedAbility);
-    }
+      this.updateAbility(changedAbility);
+    },
+    ...mapMutations("characterDetails", [
+        "updateAbility"
+      ]
+    )
   },
-  created() {
-    this.calculateBonus();
+  computed: {
+    bonus() {
+      const bonus = getAbilityBonus(this.abilityScore);
+      if (bonus > 0) {
+        return "+" + bonus.toString();
+      } else {
+        return bonus.toString();
+      }
+    }
   }
 };
 </script>

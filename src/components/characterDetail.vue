@@ -38,19 +38,19 @@
     <br> <br>
     <div class="row">
       <div class="col-sm-12">
-        <character-basic-info :character="character" class="background-green"></character-basic-info>
+        <CharacterBasicInfo class="background-green"></CharacterBasicInfo>
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-sm-12">
-        <character-stats class="background-grey"></character-stats>
+        <CharacterStats class="background-grey"></CharacterStats>
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-sm-12">
-        <character-abilities :abilities="character.abilities" class="background-brown"></character-abilities>
+        <CharacterAbilities class="background-brown"></CharacterAbilities>
       </div>
     </div>
   </div>
@@ -60,23 +60,22 @@
 import CharacterAbilities from "@/components/characterAbilities";
 import CharacterBasicInfo from "@/components/characterBasicInfo";
 import CharacterStats from "@/components/characterStats";
+import { mapActions } from 'vuex';
+
 export default {
   components: {
-    "character-basic-info": CharacterBasicInfo,
-    "character-stats": CharacterStats,
-    "character-abilities": CharacterAbilities
+    CharacterBasicInfo,
+    CharacterStats,
+    CharacterAbilities
   },
-  data() {
-    return {
-      character: {}
-    };
+  methods: {
+    ...mapActions('characterDetails', [
+        'loadCharacter'
+    ])
   },
   created() {
-    let characterName = this.$route.params.characterName;
-
-    this.$store
-      .dispatch("loadCharacter", { characterName })
-      .then(c => (this.character = c));
+    const characterName = this.$route.params.characterName;
+    this.loadCharacter({ characterName });
   }
 };
 </script>

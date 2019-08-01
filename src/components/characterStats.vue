@@ -3,54 +3,67 @@
     <div class="row">
       <div class="col-sm-3">
         Weapon:
-        <select v-model="selectedWeapon" v-on:change="updateWeapon">
-          <option v-for="weapon in availableWeapons" v-bind:value="weapon" v-bind:key="weapon.name">{{weapon.name}}</option>
+        <select v-model="weapon">
+          <option v-for="availableWeapon in availableWeapons" v-bind:key="availableWeapon.name" v-bind:value="availableWeapon">{{availableWeapon.name}}</option>
         </select>
       </div>
       <div class="col-sm-2">
         DMG:
-        <strong>{{character.DMG}}</strong>
+        <strong>{{getDmg}}</strong>
       </div>
       <div class="col-sm-3">
         Armor:
-        <select v-model="selectedArmor" v-on:change="updateArmor">
-          <option v-for="armor in availableArmor" v-bind:key="armor.name" v-bind:value="armor">{{armor.name}}</option>
+        <select v-model="armor">
+          <option v-for="availableArmor in availableArmors" v-bind:key="availableArmor.name" v-bind:value="availableArmor">{{availableArmor.name}}</option>
         </select>
       </div>
       <div class="col-sm-1">
         AC:
-        <strong>{{character.AC}}</strong>
+        <strong>{{getAc}}</strong>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { CharacterService } from "@/services/character-service";
+import { getWeapons, getArmorTypes } from "@/services/character-service";
+import { createNamespacedHelpers } from 'vuex';
+
+const { mapMutations, mapGetters, mapState } = createNamespacedHelpers('characterDetails');
+
+const getters = mapState([
+  'weapon',
+  'armor'
+]);
+const mutations = mapMutations([
+  'updateWeapon',
+  'updateArmor'
+]);
+
 export default {
   data() {
     return {
-      selectedWeapon: "",
       availableWeapons: [],
-      selectedArmor: "",
-      availableArmor: [],
-      character: {}
+      availableArmors: [],
     };
   },
-  methods: {
-    updateWeapon() {
-      this.$store.commit("updateWeapon", this.selectedWeapon);
+  computed: {
+    ...mapGetters([
+      'getDmg',
+      'getAc'
+    ]),
+    weapon: {
+      get: getters.weapon,
+      set: mutations.updateWeapon
     },
-    updateArmor() {
-      this.$store.commit("updateArmor", this.selectedArmor);
+    armor: {
+      get: getters.armor,
+      set: mutations.updateArmor
     }
   },
   created() {
-    this.character = this.$store.state.currentCharacter;
-    this.availableWeapons = CharacterService.getWeapons();
-    this.availableArmor = CharacterService.getArmorTypes();
-    this.selectedWeapon = this.character.Weapon;
-    this.selectedArmor = this.character.Armor;
+    this.availableWeapons = getWeapons();
+    this.availableArmors = getArmorTypes();
   }
 };
 </script>

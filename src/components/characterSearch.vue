@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { CharacterService } from "@/services/character-service";
+import { getCharacters } from "@/services/character-service";
 export default {
   data() {
     return {
@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     filter() {
-      this.characters = CharacterService.getCharacters();
+      this.characters = getCharacters();
 
       if (this.characterName) {
         this.characters = this.characters.filter(c =>
@@ -80,7 +80,7 @@ export default {
     }
   },
   created() {
-    this.characters = CharacterService.getCharacters();
+    this.characters = getCharacters();
   }
 };
 </script>
