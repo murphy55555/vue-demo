@@ -1,12 +1,15 @@
-import Vue from 'vue'
-import App from './App'
-import router from './router'
+import Vue from 'vue';
+import App from './App';
+import router, { useStore } from './router';
 import VeeValidate from 'vee-validate';
-import store from './store'
+import store, { useRouter } from './store';
 import vuetify from './plugins/vuetify';
 
 Vue.use(VeeValidate);
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+useRouter(router);
+useStore(store);
 
 /* eslint-disable no-new */
 new Vue({
@@ -16,4 +19,4 @@ new Vue({
   components: { App },
   vuetify,
   render: h => h(App)
-})
+});

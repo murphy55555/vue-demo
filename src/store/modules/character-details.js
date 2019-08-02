@@ -1,6 +1,6 @@
 import * as CharacterService from '@/services/character-service';
 
-const state = {
+const state = () => ({
     name: '',
     race: '',
     characterClass: '',
@@ -8,9 +8,8 @@ const state = {
     weapon: null,
     armor: null,
     abilities: null
-}
+})
 
-// MUTATIONS
 const mutations = {
     loadCharacter(state, character) {
         state.name = character.name;
@@ -40,7 +39,7 @@ const getters = {
     getAc(state) {
         return CharacterService.getAC(state.armor, state.abilities);
     },
-    getAbilitySkillStrength() {
+    getAbilitySkillStrength(state) {
         const sum = state.abilities.reduce((sum, ability) => sum + ability.score, 0);
         
         if (sum < 70) {
@@ -55,7 +54,6 @@ const getters = {
     }
 }
 
-// ACTIONS
 const actions = ({
     loadCharacter({ commit }, params) {
         // Imagine this is a webservice call and is async
