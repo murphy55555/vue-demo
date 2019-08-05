@@ -31,10 +31,8 @@
 </template>
 
 <script>
-import { getWeapons, getArmorTypes } from "@/services/character-service";
-import { createNamespacedHelpers } from 'vuex';
-
-const { mapMutations, mapGetters, mapState } = createNamespacedHelpers('characterDetails');
+import { getWeapons, getArmorTypes } from "../services/character-service";
+import { mapMutations, mapGetters, mapState } from '../store';
 
 const getters = mapState([
   'weapon',

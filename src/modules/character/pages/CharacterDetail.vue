@@ -43,10 +43,10 @@
 </template>
 
 <script>
-import CharacterAbilities from "@/components/CharacterAbilities";
-import CharacterBasicInfo from "@/components/CharacterBasicInfo";
-import CharacterStats from "@/components/CharacterStats";
-import { mapActions } from 'vuex';
+import CharacterAbilities from "../components/CharacterAbilities";
+import CharacterBasicInfo from "../components/CharacterBasicInfo";
+import CharacterStats from "../components/CharacterStats";
+import { mapActions } from '../store';
 
 export default {
   components: {
@@ -55,7 +55,7 @@ export default {
     CharacterAbilities
   },
   methods: {
-    ...mapActions('characterDetails', [
+    ...mapActions([
         'loadCharacter'
     ])
   },

@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import { getAbilityBonus } from "@/services/character-service";
-import { mapMutations } from 'vuex';
+import { getAbilityBonus } from "../services/character-service";
+import { mapMutations } from '../store';
 
 export default {
   name: "ability",
@@ -49,7 +49,7 @@ export default {
       // Commit the change
       this.updateAbility(changedAbility);
     },
-    ...mapMutations("characterDetails", [
+    ...mapMutations([
         "updateAbility"
       ]
     )

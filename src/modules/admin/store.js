@@ -1,4 +1,7 @@
-import { attemptLogin, isLoggedIn } from '@/services/admin-service';
+import store from '@/store';
+
+import { attemptLogin, isLoggedIn } from './services/admin-service';
+import { createNamespacedHelpers } from 'vuex';
 
 const state = () => ({
     errorMessage: null,
@@ -7,7 +10,7 @@ const state = () => ({
 
 const mutations = {
     setLoggedIn(state, loggedIn) {
-        state.isLoggedIn = loggedIn;
+        state.loggedIn = loggedIn;
     },
     clearErrorMessage(state) {
         state.errorMessage = null;
@@ -28,14 +31,18 @@ const actions = {
             commit('setErrorMessage', loginResult.message);
         }
     },
-    clearError({ commit }) {
-        commit("clearErrorMessage");
+    clearError({ commit, state }) {
+        if (state.errorMessage) {
+            commit("clearErrorMessage");
+        }
     }
 };
 
-export default {
+store.registerModule('admin', {
     namespaced: true,
     state,
     mutations,
     actions
-};
+});
+
+export const { mapActions, mapGetters, mapMutations, mapState } = createNamespacedHelpers('admin');

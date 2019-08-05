@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { getCharacters } from "@/services/character-service";
+import { getCharacters } from "../services/character-service";
 export default {
   data() {
     return {

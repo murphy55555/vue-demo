@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex'
-import admin from './modules/admin';
-import characterDetails from './modules/character-details';
 
 Vue.use(Vuex);
 
@@ -14,10 +12,6 @@ export default new Vuex.Store({
                 router.push(payload);
             }
         }
-    },
-    modules: {
-        admin,
-        characterDetails
     }
 });
 

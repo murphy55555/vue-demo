@@ -1,4 +1,6 @@
-import * as CharacterService from '@/services/character-service';
+import store from '@/store';
+import { createNamespacedHelpers } from 'vuex';
+import * as CharacterService from './services/character-service';
 
 const state = () => ({
     name: '',
@@ -40,6 +42,9 @@ const getters = {
         return CharacterService.getAC(state.armor, state.abilities);
     },
     getAbilitySkillStrength(state) {
+        if (!state.abilities) {
+            return 'Unknown';
+        }
         const sum = state.abilities.reduce((sum, ability) => sum + ability.score, 0);
         
         if (sum < 70) {
@@ -63,10 +68,12 @@ const actions = ({
     }
 });
 
-export default {
+store.registerModule('character', {
     namespaced: true,
     state,
     mutations,
     actions,
     getters
-};
+});
+
+export const { mapActions, mapGetters, mapMutations, mapState } = createNamespacedHelpers('character');

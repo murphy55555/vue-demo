@@ -40,9 +40,7 @@
   </div>
 </template>
 <script>
-import { createNamespacedHelpers } from 'vuex';
-
-const { mapActions, mapState } = createNamespacedHelpers('admin');
+import { mapActions, mapState } from '../store';
 
 export default {
   data: () => ({

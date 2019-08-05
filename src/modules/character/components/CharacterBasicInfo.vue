@@ -17,10 +17,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from '../store';
+
 export default {
   computed: {
-    ...mapState('characterDetails', [
+    ...mapState([
       'name',
       'level',
       'characterClass',

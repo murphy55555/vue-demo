@@ -15,17 +15,17 @@
 
 <script>
 import CharacterAbility from "./CharacterAbility";
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters } from '../store';
 
 export default {
   components: {
     CharacterAbility
   },
   computed: {
-    ...mapState('characterDetails', [
+    ...mapState([
       'abilities'
     ]),
-    ...mapGetters('characterDetails', [
+    ...mapGetters([
       'getAbilitySkillStrength'
     ])
   }
