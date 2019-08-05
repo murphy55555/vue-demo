@@ -10,5 +10,6 @@ router.addRoutes([{
 {
   path: '/character/:characterName',
   name: 'characterDetail',
+  props: true,
   component: CharacterDetail
 }]);

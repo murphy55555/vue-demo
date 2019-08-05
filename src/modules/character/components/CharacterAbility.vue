@@ -4,20 +4,22 @@
       {{abilityType}}
     </v-card-title>
     <v-slider
-        v-model.number="abilityScore"
+        :value="score"
         class="align-center"
         hide-details
         :min="0"
         :max="20"
+        @input="abilityChanged"
       >
         <template #append>
           <v-text-field
-            v-model.number="abilityScore"
+            :value="score"
             class="mt-0 pt-0"
             hide-details
             single-line
             type="number"
             style="width: 40px"
+            @input="abilityChanged"
           ></v-text-field>
         </template>
       </v-slider>
@@ -32,21 +34,12 @@ import { mapMutations } from '../store';
 export default {
   name: "ability",
   props: ["abilityType", "score"],
-  data: function() {
-    return {
-      abilityScore: this.score
-    };
-  },
   methods: {
-    abilityChanged() {
-      // TODO: should this validate before updating the store or always update the store? https://baianat.github.io/vee-validate/examples/vuex.html#demo
-      if (this.errors.any()) return;
-
+    abilityChanged(value) {
       let changedAbility = {
         type: this.abilityType,
-        newScore: this.abilityScore
+        newScore: parseFloat(value) || value
       };
-      // Commit the change
       this.updateAbility(changedAbility);
     },
     ...mapMutations([
@@ -54,14 +47,9 @@ export default {
       ]
     )
   },
-  watch: {
-    abilityScore() {
-      this.abilityChanged();
-    }
-  },
   computed: {
     bonus() {
-      const bonus = getAbilityBonus(this.abilityScore);
+      const bonus = getAbilityBonus(this.score);
       if (bonus > 0) {
         return "+" + bonus.toString();
       } else {

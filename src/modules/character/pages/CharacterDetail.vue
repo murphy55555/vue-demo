@@ -1,40 +1,25 @@
 <template>
   <div>
-    <h3>Component Legend</h3>
-    <v-layout>
-      <v-flex>
-        <table>
-          <thead>
-            <tr>
-              <th>Component</th>
-              <th>Color</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>CharacterDetail.vue</td>
-              <td>white</td>
-            </tr>
-            <tr>
-              <td>CharacterBasicInfo.vue</td>
-              <td class="calledout-component background-green">aquamarine</td>
-            </tr>
-            <tr>
-              <td>CharacterStats.vue</td>
-              <td class="calledout-component background-grey">lightgrey</td>
-            </tr>
-            <tr>
-              <td>CharacterAbilities.vue</td>
-              <td class="calledout-component background-brown">wheat</td>
-            </tr>
-            <tr>
-              <td>CharacterAbility.vue</td>
-              <td class="calledout-component background-blue">paleturquoise</td>
-            </tr>
-          </tbody>
-        </table>
-      </v-flex>
-    </v-layout>
+    <v-menu offset-y>
+      <template v-slot:activator="{ on }">
+        <v-btn
+          color="primary"
+          dark
+          v-on="on"
+        >
+          Characters
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item
+          v-for="(character, index) in characters"
+          :key="index"
+          :to="{ name: 'characterDetail', params: { characterName: character.name }}"
+        >
+          <v-list-item-title>{{character.name}}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
     <br>
     <CharacterBasicInfo class="calledout-component background-green"></CharacterBasicInfo>
     <CharacterStats class="calledout-component background-grey"></CharacterStats>
@@ -47,6 +32,7 @@ import CharacterAbilities from "../components/CharacterAbilities";
 import CharacterBasicInfo from "../components/CharacterBasicInfo";
 import CharacterStats from "../components/CharacterStats";
 import { mapActions } from '../store';
+import { getCharacters } from '../services/character-service';
 
 export default {
   components: {
@@ -54,14 +40,29 @@ export default {
     CharacterStats,
     CharacterAbilities
   },
+  props: {
+    characterName: String
+  },
+  data() {
+    return {
+      characters: []
+    }
+  },
   methods: {
     ...mapActions([
         'loadCharacter'
     ])
   },
+  watch: {
+    characterName: {
+      handler(newVal) {
+        this.loadCharacter({ characterName: newVal });
+      },
+      immediate: true
+    }
+  },
   created() {
-    const characterName = this.$route.params.characterName;
-    this.loadCharacter({ characterName });
+    this.characters = getCharacters();
   }
 };
 </script>
