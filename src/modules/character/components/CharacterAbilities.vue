@@ -1,15 +1,17 @@
 <template>
-  <div class="abilities-box">
-    <h3 class="text-center">Ability Scores</h3>
-    <v-layout>
-      <v-flex xs2 v-for="a in abilities" :key="a.type">
-        <CharacterAbility :score="a.score" :ability-type="a.type" class="background-blue">
+  <div>
+    <div class="text-center title">Ability Scores</div>
+    <v-layout wrap justify-center>
+      <v-flex xl2 lg2 md3 sm4 xs6 v-for="a in abilities" :key="a.type">
+        <CharacterAbility :score="a.score" :ability-type="a.type">
         </CharacterAbility>
       </v-flex>
     </v-layout>
-    <div class="text-center">Your ability skills are
-      <strong>{{getAbilitySkillStrength}}</strong>
-    </div>
+    <v-layout justify-center>
+      <v-alert type="info" class="d-inline-flex">
+        Your ability skills are <strong>{{getAbilitySkillStrength}}</strong>
+      </v-alert>
+    </v-layout>
   </div>
 </template>
 

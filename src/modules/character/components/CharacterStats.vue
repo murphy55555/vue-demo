@@ -1,30 +1,40 @@
 <template>
   <div>
     <v-layout justify-center>
-      <v-flex xs2>
-        <v-select
-          label="Weapon"
-          v-model="weapon"
-          :items="availableWeapons"
-          item-text="name"
-          item-value="name"
-          return-object
-          >
-        </v-select>
-        DMG <strong>{{getDmg}}</strong>
+      <v-flex xl2 lg3 md3 sm4 xs6>
+        <v-card>
+          <v-card-text>
+            Damage
+            <div class="title text--primary">{{getDmg}}</div>
+            <v-select
+              label="Weapon"
+              v-model="weapon"
+              :items="availableWeapons"
+              item-text="name"
+              item-value="name"
+              return-object
+              >
+            </v-select>
+          </v-card-text>
+        </v-card>
       </v-flex>
         
-      <v-flex xs2>
-        <v-select
-          label="Armor"
-          v-model="armor"
-          :items="availableArmors"
-          item-text="name"
-          item-value="name"
-          return-object
-          >
-        </v-select>
-        AC <strong>{{getAc}}</strong>
+      <v-flex xl2 lg3 md3 sm4 xs6>
+        <v-card>
+          <v-card-text>
+            Armor Class
+            <div class="title text--primary">{{getAc}}</div>
+            <v-select
+              label="Armor"
+              v-model="armor"
+              :items="availableArmors"
+              item-text="name"
+              item-value="name"
+              return-object
+              >
+            </v-select>
+          </v-card-text>
+        </v-card>
       </v-flex>
     </v-layout>
   </div>

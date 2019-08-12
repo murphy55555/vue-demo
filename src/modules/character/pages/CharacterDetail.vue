@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-menu offset-y>
-      <template v-slot:activator="{ on }">
+      <template #activator="{ on }">
         <v-btn
           color="primary"
           dark
@@ -20,10 +20,12 @@
         </v-list-item>
       </v-list>
     </v-menu>
-    <br>
-    <CharacterBasicInfo class="calledout-component background-green"></CharacterBasicInfo>
-    <CharacterStats class="calledout-component background-grey"></CharacterStats>
-    <CharacterAbilities class="calledout-component background-brown"></CharacterAbilities>
+    <br />
+    <CharacterBasicInfo></CharacterBasicInfo>
+    <br />
+    <CharacterStats></CharacterStats>
+    <br />
+    <CharacterAbilities></CharacterAbilities>
   </div>
 </template>
 
@@ -68,21 +70,4 @@ export default {
 </script>
 
 <style>
-.calledout-component {
-  border: 2px solid;
-  padding: 10px;
-  margin: 2px;
-}
-.background-green {
-  background-color: aquamarine;
-}
-.background-grey {
-  background-color: lightgrey;
-}
-.background-brown {
-  background-color: wheat;
-}
-.background-blue {
-  background-color: paleturquoise !important;
-}
 </style>

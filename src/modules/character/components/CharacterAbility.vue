@@ -3,6 +3,7 @@
     <v-card-title>
       {{abilityType}}
     </v-card-title>
+    <v-card-text>
     <v-slider
         :value="score"
         class="align-center"
@@ -24,6 +25,7 @@
         </template>
       </v-slider>
     <span>Bonus <strong>{{bonus}}</strong></span>
+    </v-card-text>
   </v-card>
 </template>
 

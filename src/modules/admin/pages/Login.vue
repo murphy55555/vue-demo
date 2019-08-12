@@ -10,20 +10,20 @@
     </v-alert>
     <form v-else @submit.prevent="formSubmitted">
       <v-layout justify-center wrap>
-        <v-flex xs3>
+        <v-flex xl2 lg3 md3 sm4 xs5>
           <v-text-field
             v-model="username"
             label="Username"
           ></v-text-field>
         </v-flex>
-        <v-flex xs3>
+        <v-flex xl2 lg3 md3 sm4 xs5>
           <v-text-field
             v-model="password"
             label="Password"
             type="password"
           ></v-text-field>
-        </v-flex>
-        <v-flex xs1>
+        </v-flex>\
+        <v-flex shrink>
           <v-btn
             color="primary"
             type="submit">
