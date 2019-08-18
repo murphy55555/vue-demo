@@ -12,7 +12,7 @@
             <v-text-field
               v-model="character.name"
               label="Character Name"
-              v-validate="'required'"
+              v-validate="'required|characterNameIsUnique'"
               name="charName"
               :error-messages="errors.collect('charName')"
             ></v-text-field>
@@ -42,7 +42,7 @@
             <v-select
               label="Class"
               v-validate="'required'"
-              v-model="character.class"
+              v-model="character.characterClass"
               :items="availableClasses"
               name="charClass"
               :error-messages="errors.collect('charClass')"
@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import { getRaces, getClasses } from "../../services/character-service";
+import { getRaces, getClasses, getCharacters} from "../../services/character-service";
 import { Validator } from 'vee-validate';
 const errMessageDictionary = {
    en: {
@@ -85,6 +85,13 @@ const errMessageDictionary = {
   }
 }
 Validator.localize(errMessageDictionary);
+Validator.extend('characterNameIsUnique', {
+  getMessage: (field) => 'You already have a character with this name.',
+  validate: (value) => {
+    let existingCharacter = getCharacters().find(c=>c.name === value);
+    return existingCharacter ? false : true;
+  }
+});
 
 export default {
   name: "createBasicInfo",

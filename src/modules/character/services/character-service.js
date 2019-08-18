@@ -21,6 +21,13 @@ export function getCharacters() {
     }
 }
 
+export function createCharacter(character){
+    console.log(character);
+    let characters = JSON.parse(localStorage.getItem('characters'));
+    characters.push(character);
+    localStorage.setItem('characters', JSON.stringify(characters));
+}
+
 export function getCharacter(characterName) {
     return getCharacters()
         .find(c => c.name.toLowerCase() === characterName.toLowerCase());

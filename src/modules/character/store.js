@@ -65,6 +65,9 @@ const actions = ({
         let character = CharacterService.getCharacter(params.characterName);
         commit("loadCharacter", character);
         return character;
+    },
+    createCharacter({ commit }, params){
+        CharacterService.createCharacter(params);
     }
 });
 
