@@ -1,27 +1,70 @@
 <template>
-  <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetiful D&amp;D</span>
-      </v-toolbar-title>
+  <v-app app>
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+    >
+      <v-list dense>
+        <v-list-item @click="routeTo('characterSearch')">
+          <v-list-item-action>
+            <v-icon>search</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Character Search</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="routeTo('createBasicInfo')">
+          <v-list-item-action>
+            <v-icon>add</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Create Character</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar
+      app
+      color="indigo"
+      dark
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>Vuetiful D&amp;D</v-toolbar-title>
     </v-app-bar>
-
     <v-content>
       <v-container grid-list-xl>
-        <router-view/>
+        <v-row>
+          <v-col>
+            <router-view />
+          </v-col>
+        </v-row>
       </v-container>
     </v-content>
+    <v-footer
+      color="indigo"
+      app
+    >
+      <span class="white--text">&copy; 2019</span>
+    </v-footer>
   </v-app>
 </template>
 
 <script>
 export default {
-  name: 'App'
-}
+  name: "App",
+  data: () => ({
+    drawer: null
+  }),
+  methods: {
+    routeTo(namedRoute) {
+      this.$router.push({ name: namedRoute });
+    }
+  }
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
 }
 </style>

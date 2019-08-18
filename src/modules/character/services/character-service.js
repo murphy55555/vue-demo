@@ -34,6 +34,14 @@ export function getWeapons() {
     return [{ name: "Battle Axe", baseDMG: 10 }, { name: "Short Sword", baseDMG: 4 }, { name: "Morning Star", baseDMG: 6 }];
 }
 
+export function getRaces() {
+    return ["Human","Barbarian","High Elf","Drow","Draconian"];
+}
+
+export function getClasses() {
+    return ["Druid","Fighter","Wizard","Thief"];
+}
+
 export function getAbilityBonus(score) {
     if (score <= 5) {
         return -1;
