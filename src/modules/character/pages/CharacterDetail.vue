@@ -42,9 +42,9 @@ export default {
     CharacterStats,
     CharacterAbilities
   },
-  props: {
-    characterName: ""
-  },
+  props: [
+    "characterName"
+  ],
   data() {
     return {
       characters: []
