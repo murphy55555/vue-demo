@@ -33,7 +33,7 @@
             <v-btn
               color="deep-purple accent-4"
               text
-              @click="createCharacter(character)"
+              @click="createCharacterAndRedirect"
             >
               Create!
             </v-btn>
@@ -52,7 +52,11 @@ export default {
   name: "confirmCreation",
   props: ["character"],
   methods: {
-    ...mapActions(["createCharacter"])
+    ...mapActions(["createCharacter"]),
+    createCharacterAndRedirect(){
+      this.createCharacter(this.character);
+      this.$router.push({ name: "characterSearch" });
+    }
   },
   computed: {}
 };

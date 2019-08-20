@@ -12,7 +12,7 @@ router.addRoutes([{
 }])
 
 router.beforeEach((to, _, next) => {
-  if (!to.meta.allowAnonymous) {
+  if (to.meta.allowAnonymous) {
     next();
   } else {
     if (store && store.state.admin.loggedIn) {

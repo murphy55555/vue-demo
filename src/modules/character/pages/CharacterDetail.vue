@@ -43,7 +43,7 @@ export default {
     CharacterAbilities
   },
   props: {
-    characterName: String
+    characterName: ""
   },
   data() {
     return {

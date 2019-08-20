@@ -86,7 +86,7 @@ const errMessageDictionary = {
 }
 Validator.localize(errMessageDictionary);
 Validator.extend('characterNameIsUnique', {
-  getMessage: (field) => 'You already have a character with this name.',
+  getMessage: () => 'You already have a character with this name.',
   validate: (value) => {
     let existingCharacter = getCharacters().find(c=>c.name === value);
     return existingCharacter ? false : true;
