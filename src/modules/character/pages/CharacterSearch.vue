@@ -49,8 +49,8 @@
             <router-link
               :to="{ name: 'characterDetail', params: { characterName: character.name }}">
               {{character.name}}
-              </router-link>
-            </td>
+            </router-link>
+          </td>
           <td>{{character.level}}</td>
           <td>{{character.race}}</td>
         </tr>

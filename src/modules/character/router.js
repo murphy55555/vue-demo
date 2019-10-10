@@ -24,20 +24,20 @@ router.addRoutes([{
   children: [
     {
       path: '',
-      props: true,
       name: 'createBasicInfo',
+      props: true,
       component: CreateBasicInfo
     },
     {
+      path: 'abilities',
       name: 'createAbilityScores',
       props: true,
-      path: 'abilities',
       component: CreateAbilityScores
     },
     {
+      path: 'confirm',
       name: 'confirmCreation',
       props: true,
-      path: 'confirm',
       component: ConfirmCreation
     }
   ]
