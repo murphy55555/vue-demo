@@ -19,25 +19,21 @@ router.addRoutes([{
 },
 {
   path: '/create-character',
-  props: true,
   component: CharacterCreate,
   children: [
     {
       path: '',
       name: 'createBasicInfo',
-      props: true,
       component: CreateBasicInfo
     },
     {
       path: 'abilities',
       name: 'createAbilityScores',
-      props: true,
       component: CreateAbilityScores
     },
     {
       path: 'confirm',
       name: 'confirmCreation',
-      props: true,
       component: ConfirmCreation
     }
   ]
