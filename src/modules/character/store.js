@@ -66,7 +66,7 @@ const actions = ({
         commit("loadCharacter", character);
         return character;
     },
-    createCharacter(params){
+    createCharacter(_, params){
         // Imagine this is a webservice call and is async
         CharacterService.createCharacter(params);
     }

@@ -11,7 +11,7 @@
           <v-card-title>{{character.name}}</v-card-title>
           <v-card-text>
             <v-row align="center">
-              <div class="grey--text ml-4">{{"Level " + character.level + " " + character.race + " " + character.class}}</div>
+              <div class="grey--text ml-4">{{"Level " + character.level + " " + character.race + " " + character.characterClass}}</div>
             </v-row>
           </v-card-text>
           <v-divider class="mx-4"></v-divider>

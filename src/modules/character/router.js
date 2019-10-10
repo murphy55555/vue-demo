@@ -31,13 +31,13 @@ router.addRoutes([{
     {
       name: 'createAbilityScores',
       props: true,
-      path: '/create-character/abilities',
+      path: 'abilities',
       component: CreateAbilityScores
     },
     {
       name: 'confirmCreation',
       props: true,
-      path: '/create-character/confirm',
+      path: 'confirm',
       component: ConfirmCreation
     }
   ]
